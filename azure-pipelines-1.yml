@@ -6,12 +6,21 @@
 trigger:
 - master
 
+variables:
+   solutionPath: SportsApparelApp
+
 pool:
   vmImage: 'ubuntu-latest'
 
 
 
 steps:
+
+- script: dotnet build
+- script: dotnet build -c Release
+  displayName: dotnet build
+  workingDirectory: $(solutionPath)
+
 # ...
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
