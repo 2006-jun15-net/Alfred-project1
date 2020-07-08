@@ -25,6 +25,22 @@ jobs:
   - script: dotnet build
     displayName: dotnet build
     workingDirectory: RestaurantReviews
-
-
+  
 - job: build_windows
+
+  pool:
+    vmImage: windows-latest
+
+  steps:
+    - task: VSBuild@1
+      displayName: Visual Studio
+      inputs:
+         solution: '**\*.sln'
+         platform: 'Any CPU'
+         configuration: 'Release'
+
+
+
+
+  
+ 
