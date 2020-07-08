@@ -9,6 +9,7 @@ pr:
 variables:
    solutionPath: SportsApparelApp
 
+
 #pool:
  # vmImage: 'ubuntu-latest'
 
@@ -19,9 +20,16 @@ jobs:
     # get a microsoft-hosted agent running the latest ubuntu linux.
     vmImage: 'ubuntu-latest'
 
-
   # job has steps
   steps:
+  - task: SonarCloudPrepare@1
+    inputs:
+     SonarCloud: 'sonarcloud-rwagajua'
+     organization: '2006-jun15-net'
+     scannerMode: 'MSBuild'
+     projectKey: '2006-jun15-net_Alfred-project1'
+     projectName: 'Alfred project 1'
+
   - script: dotnet build
     displayName: dotnet build
     workingDirectory: solutionPath
