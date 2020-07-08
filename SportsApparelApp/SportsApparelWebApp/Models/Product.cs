@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ApparelApp.Entities.Entities
+namespace SportsApparelWebApp.Models
 {
-    public partial class Product
+    public class Product
     {
-
         [Key]
         public int ProdId { get; set; }
+
+
+        [Required]
         public string Name { get; set; }
     }
 }

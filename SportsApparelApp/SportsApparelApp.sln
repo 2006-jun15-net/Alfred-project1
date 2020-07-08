@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests_SportsApparel", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApparelApp.Entities", "ApparelApp.Entities\ApparelApp.Entities.csproj", "{B12F5CC3-08F6-400F-8714-A5CF4E1E52EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsApparelWebApp", "SportsApparelWebApp\SportsApparelWebApp.csproj", "{0826841B-D03A-4C60-AA62-5E553A94AC68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportsApparelWebApp", "SportsApparelWebApp\SportsApparelWebApp.csproj", "{956E7238-3CED-45D1-B71F-4023F3B3DB9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{B12F5CC3-08F6-400F-8714-A5CF4E1E52EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B12F5CC3-08F6-400F-8714-A5CF4E1E52EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B12F5CC3-08F6-400F-8714-A5CF4E1E52EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0826841B-D03A-4C60-AA62-5E553A94AC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0826841B-D03A-4C60-AA62-5E553A94AC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0826841B-D03A-4C60-AA62-5E553A94AC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0826841B-D03A-4C60-AA62-5E553A94AC68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{956E7238-3CED-45D1-B71F-4023F3B3DB9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{956E7238-3CED-45D1-B71F-4023F3B3DB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{956E7238-3CED-45D1-B71F-4023F3B3DB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{956E7238-3CED-45D1-B71F-4023F3B3DB9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

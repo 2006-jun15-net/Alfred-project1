@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ApparelApp.Entities.Entities;
 using SportsApparelWebApp.Data;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 
 namespace SportsApparelWebApp.Controllers
 {
@@ -48,6 +49,14 @@ namespace SportsApparelWebApp.Controllers
         {
             return View();
         }
+
+        //adding a new action for new customer
+        public ActionResult New()
+        {
+            return View();
+
+        }
+
 
         // POST: Customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

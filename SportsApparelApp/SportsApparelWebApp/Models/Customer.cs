@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ApparelApp.Entities.Entities
+namespace SportsApparelWebApp.Models
 {
-    public partial class Customer
+    public class Customer
     {
-        public Customer()
-        {
-            Orders = new HashSet<Orders>();
-        }
-
         [Key]
         public int CustId { get; set; }
+
+        [Required]
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
         public string Sex { get; set; }
 
-        public virtual ICollection<Orders> Orders { get; set; }
     }
 }
