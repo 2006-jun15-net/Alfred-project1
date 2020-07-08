@@ -24,7 +24,7 @@ jobs:
   steps:
   - script: dotnet build
     displayName: dotnet build
-    workingDirectory: RestaurantReviews
+    workingDirectory: solutionPath
   
 - job: build_windows
 
