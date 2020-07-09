@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace SportsApparelWebApp.ViewModels
 
         [Required]
         public string LastName { get; set; }
+
+        [BindProperty(SupportsGet =true)]
+        public string SearchString { get; set; }
 
     }
 }

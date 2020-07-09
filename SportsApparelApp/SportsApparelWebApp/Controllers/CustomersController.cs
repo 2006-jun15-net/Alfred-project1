@@ -20,10 +20,24 @@ namespace SportsApparelWebApp.Controllers
             _context = context;
         }
 
-        // GET: Customers
-        public async Task<IActionResult> Index()
+        /// <summary>
+        /// This action method searhces a customer by their last name.
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
+        
+        [HttpGet]
+        public async Task<IActionResult> Index(string SearchString)
         {
-            return View(await _context.Customer.ToListAsync());
+            
+            var customers = from m in _context.Customer
+                            select m;
+            if(!String.IsNullOrEmpty(SearchString))
+            {
+                customers = customers.Where(s => s.FirstName.Contains(SearchString) || s.LastName.Contains(SearchString));
+            }
+
+            return View(await customers.ToListAsync());
         }
 
         // GET: Customers/Details/5
