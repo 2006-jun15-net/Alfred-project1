@@ -26,7 +26,14 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-
+  - task: SonarCloudPrepare@1
+    displayName: sonarcloud prepare analysis
+    inputs:
+     SonarCloud: 'sonarcloud-rwagajua'
+     organization: '2006-jun15-net'
+     scannerMode: 'MSBuild'
+     projectKey: '2006-jun15-net_Alfred-project1'
+     projectName: 'Alfred project 1'
   - script: dotnet build -c Release
 
     displayName: dotnet build
