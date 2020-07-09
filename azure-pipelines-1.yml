@@ -1,0 +1,54 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pr:
+- master
+
+variables:
+   solutionPath: SportsApparelApp
+
+
+#pool:
+ # vmImage: 'ubuntu-latest'
+
+jobs:
+- job: build_linux
+  # pool section defines what agent the job will run on
+  pool:
+    # get a microsoft-hosted agent running the latest ubuntu linux.
+    vmImage: 'ubuntu-latest'
+
+  # job has steps
+  steps:
+  - task: SonarCloudPrepare@1
+    inputs:
+     SonarCloud: 'sonarcloud-rwagajua'
+     organization: '2006-jun15-net'
+     scannerMode: 'MSBuild'
+     projectKey: '2006-jun15-net_Alfred-project1'
+     projectName: 'Alfred project 1'
+
+  - script: dotnet build
+    displayName: dotnet build
+    workingDirectory: solutionPath
+  
+- job: build_windows
+
+  pool:
+    vmImage: windows-latest
+
+  steps:
+    - task: VSBuild@1
+      displayName: Visual Studio
+      inputs:
+         solution: '**\*.sln'
+         platform: 'Any CPU'
+         configuration: 'Release'
+
+
+
+
+  
+ 
