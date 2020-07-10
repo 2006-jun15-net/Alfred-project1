@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ApparelApp.Entities.Entities
 {
@@ -11,7 +10,6 @@ namespace ApparelApp.Entities.Entities
             Orders = new HashSet<Orders>();
         }
 
-        [Key]
         public int CustId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

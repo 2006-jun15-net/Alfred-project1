@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApparelApp.Domain\ApparelApp.Domain.csproj" />
     <ProjectReference Include="..\ApparelApp.Entities\ApparelApp.Entities.csproj" />
   </ItemGroup>
 

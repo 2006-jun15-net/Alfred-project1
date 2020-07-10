@@ -128,6 +128,8 @@ namespace ApparelApp.Entities.Entities
                 entity.Property(e => e.ProdId).HasColumnName("ProdID");
 
                 entity.Property(e => e.Name).HasMaxLength(35);
+
+                entity.Property(e => e.Price).HasColumnType("decimal(5, 2)");
             });
 
             modelBuilder.Entity<Store>(entity =>

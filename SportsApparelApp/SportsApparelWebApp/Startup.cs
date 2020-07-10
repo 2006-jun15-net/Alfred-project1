@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using ApparelApp.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using SportsApparelWebApp.Data;
+using ApparelApp.Entities.Interfaces;
+using SportsApparelWebApp.Repositories;
 
 namespace SportsApparelWebApp
 {
@@ -28,8 +30,12 @@ namespace SportsApparelWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration);
+
             services.AddDbContext<SportsApparelWebAppContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddTransient<ICustomerRepo, CustomerRepo>();
 
             //adding controleers with their views
             services.AddControllersWithViews();

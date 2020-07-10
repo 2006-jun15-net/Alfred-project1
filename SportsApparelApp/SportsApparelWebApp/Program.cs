@@ -21,6 +21,7 @@ namespace SportsApparelWebApp
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                         
                 });
     }
 }

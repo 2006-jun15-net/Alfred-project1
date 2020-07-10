@@ -10,17 +10,16 @@ namespace SportsApparelWebApp.ViewModels
     public class CustomerViewModel
     {
 
-        [Key]
+        [Display(Name = "ID")]
         public int CustId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter student name.")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter student name.")]
         public string LastName { get; set; }
 
-        [BindProperty(SupportsGet =true)]
-        public string SearchString { get; set; }
-
+        
+     
     }
 }
