@@ -8,6 +8,7 @@ namespace ApparelApp.Entities.Interfaces
     public interface ICustomerRepo
     {
         IEnumerable<Customer> GetAll();
+        IEnumerable<Customer> GetCustomers(string search = null);
         Customer GetById(int ID);
         void Insert(Customer customer);
         void Update(Customer customer);

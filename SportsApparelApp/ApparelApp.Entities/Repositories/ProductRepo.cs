@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SportsApparelWebApp.Repositories
 {
@@ -15,6 +15,11 @@ namespace SportsApparelWebApp.Repositories
         private readonly SportsApparelContext _contextStores;
 
         private readonly ILogger<ProductRepo> _logger;
+
+        public ProductRepo()
+        {
+            _contextStores = new SportsApparelContext();
+        }
 
         public ProductRepo(SportsApparelContext contextStores, ILogger<ProductRepo> logger)
         {
@@ -33,6 +38,19 @@ namespace SportsApparelWebApp.Repositories
         public IEnumerable<Product> GetAll()
         {
             return _contextStores.Product.ToList();
+        }
+
+        public IEnumerable<SelectListItem> GetAllProducts()
+        {
+            var selectList = new List<SelectListItem>();
+            selectList = (from obj in _contextStores.Product
+                          select new SelectListItem()
+                          {
+                              Text = obj.Name,
+                              Value = obj.ProdId.ToString(),
+                              Selected = true
+                          }).ToList();
+            return selectList;
         }
 
         public Product GetById(int ID)

@@ -5,7 +5,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Globalization;
 
 namespace SportsApparelWebApp.Repositories
 {
@@ -45,6 +46,19 @@ namespace SportsApparelWebApp.Repositories
            
         }
 
+        public IEnumerable<SelectListItem> GetAllCustomers()
+        {
+            var selectList = new List<SelectListItem>();
+            selectList = (from obj in _contextStores.Customer
+                          select new SelectListItem()
+                          {
+                              Text = obj.LastName,
+                              Value = obj.CustId.ToString(),
+                              Selected = true
+                          }).ToList();
+            return selectList;
+        }
+
         public Customer GetById(int ID)
         {
             return _contextStores.Customer.Find(ID);
@@ -63,6 +77,18 @@ namespace SportsApparelWebApp.Repositories
         public void Update(Customer customer)
         {
             _contextStores.Entry(customer).State = EntityState.Modified;
+        }
+
+
+        public IEnumerable<Customer> GetCustomers(string search)
+        {
+            IQueryable<Customer> customers = _contextStores.Customer;
+            if(!String.IsNullOrEmpty(search))
+            {
+                customers = customers.Where(x => x.LastName.Contains(search));
+            }
+            return customers.ToList();
+                
         }
 
 

@@ -12,11 +12,15 @@ namespace SportsApparelWebApp.Controllers
     {
         public IActionResult Index()
         {
-           
+            CustomerRepo customerRepo = new CustomerRepo();
+            StoreRepo storeRepo = new StoreRepo();
+            ProductRepo productRepo = new ProductRepo();
 
-          
-            //var  objModels = new Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
-            return View();
+            var objModel = new Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
+                (customerRepo.GetAllCustomers(), storeRepo.GetAllStores(), productRepo.GetAllProducts());
+
+
+            return View(objModel);
         }
     }
 }

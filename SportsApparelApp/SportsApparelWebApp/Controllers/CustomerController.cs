@@ -7,6 +7,7 @@ using ApparelApp.Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using SportsApparelWebApp.Repositories;
 using Microsoft.EntityFrameworkCore;
+using SportsApparelWebApp.ViewModels;
 
 namespace SportsApparelWebApp.Controllers
 {
@@ -39,11 +40,27 @@ namespace SportsApparelWebApp.Controllers
             
         }
 
-       /* public IActionResult Index()
+       /* public ActionResult Index([FromQuery] string search = "")
         {
-            var model = _customerRepo.GetAll();
-            return View(model);
+            
+
+            IEnumerable<Customer> customers = _customerRepo.GetCustomers(search);
+            IEnumerable<CustomerViewModel> viewModels = customers.Select(x => new CustomerViewModel
+            {
+                CustId = x.CustId,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Sex = x.Sex,
+
+            }); 
+            return View(viewModels);
         }*/
+
+        /* public IActionResult Index()
+         {
+             var model = _customerRepo.GetAll();
+             return View(model);
+         }*/
 
         [HttpGet]
         public ActionResult AddCustomer()
@@ -87,8 +104,10 @@ namespace SportsApparelWebApp.Controllers
         [HttpGet]
         public ActionResult DeleteCustomer(int ID)
         {
-            Customer model = _customerRepo.GetById(ID);
-            return View(model);
+             _customerRepo.Delete(ID);
+            
+            
+            return View();
         }
 
         [HttpPost]

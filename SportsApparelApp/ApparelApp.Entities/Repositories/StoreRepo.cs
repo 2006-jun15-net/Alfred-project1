@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SportsApparelWebApp.Repositories
 {
@@ -13,6 +14,11 @@ namespace SportsApparelWebApp.Repositories
         private readonly SportsApparelContext _contextStores;
 
         private readonly ILogger<StoreRepo> _logger;
+
+        public StoreRepo()
+        {
+            _contextStores = new SportsApparelContext();
+        }
 
         public StoreRepo(SportsApparelContext contextStores, ILogger<StoreRepo> logger)
         {
@@ -26,6 +32,19 @@ namespace SportsApparelWebApp.Repositories
         public IEnumerable<ApparelApp.Entities.Entities.Store> GetAll()
         {
             return _contextStores.Store.ToList();
+        }
+
+        public IEnumerable<SelectListItem> GetAllStores()
+        {
+            var selectList = new List<SelectListItem>();
+            selectList = (from obj in _contextStores.Store
+                          select new SelectListItem()
+                          {
+                              Text = obj.Location,
+                              Value = obj.StoreId.ToString(),
+                              Selected = true
+                          }).ToList();
+            return selectList;
         }
 
         public ApparelApp.Entities.Entities.Store GetById(int ID)

@@ -29,6 +29,10 @@ Stock INT DEFAULT 0, FOREIGN KEY(StoreID) REFERENCES Store(StoreID), FOREIGN KEY
 alter table Product
 alter column Name NVARCHAR (35);
 
+
+
+
+
 --adding customers
 --INSERTING VALLUES IN THE TABLES
 
@@ -74,4 +78,12 @@ values(95, 1200, 67), (85, 3000, 34), (90, 1500, 12),(110, 2000,9), (80, 2700, 2
 (145, 2900, 76), (100, 2400, 23), (185, 1900, 34), (145, 2000, 23);
 
 
+--altering the product table
+alter table Product
+alter COLUMN  Price DECIMAL(5,2)
+
+--updating the Price in Products
+update Product
+set Price = 50.00
+where Price = 0;
 

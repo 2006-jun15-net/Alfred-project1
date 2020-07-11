@@ -1,0 +1,41 @@
+﻿@*
+
+*@
+
+@model Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
+@{
+
+    ViewBag.Title = "Index";
+
+
+}
+
+<fieldset>
+    <legend>
+        Place Order
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class=" form-group">
+
+                    Customer:
+                    @Html.DropDownList("Customer", new SelectList(Model.Item1, "Value", "Text"), new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class=" form-group">
+
+                    Store:
+                    @Html.DropDownList("Store", new SelectList(Model.Item2, "Value", "Text"), new { @class = "form-control" })
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</fieldset>
+
