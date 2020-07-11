@@ -10,13 +10,68 @@
 
 }
 
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Product").change(function () {
+            var ProdId = $("#Product").val();
+            GetPrice(ProdId);
+
+        });
+
+
+    });
+
+    function GetPrice(ProdId) {
+        $.ajax({
+            async: true,
+            type: 'GET',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            data: { ProdId: ProdId },
+            url: '/Shop/GetPrice',
+            success: function(data) {
+                $("#txtPrice").val(parseFloat(data).toFixed(2));
+
+            },
+            error: function() {
+                alert("An error with the unit price");
+            }
+        })
+    }
+
+</script>
+
+<style>
+    fieldset{
+        border: 1px solid;
+        margin:0;
+        padding: 10px;
+        position: relative;
+        border-radius:4px;
+        padding-left: 10px
+
+    }
+    legend{
+        font-size:14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid;
+        border-radius: 4px;
+        padding: 10px;
+    }
+</style>
+
 <fieldset>
     <legend>
         Place Order
     </legend>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class=" form-group">
 
                     Customer:
@@ -25,7 +80,19 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            
+            
+        </div>
+
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Products</legend>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
                 <div class=" form-group">
 
                     Store:
@@ -34,8 +101,99 @@
                 </div>
             </div>
 
-        </div>
+            <div class="col-md-4">
+                <div class="form-group">
 
+                    Product item:
+                    @Html.DropDownList("Product", new SelectList(Model.Item3, "Value", "Text"), new { @class = "form-control" })
+
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+
+                    Price:
+                    <input type="text" readonly="readonly" id="txtPrice" value="0.00" name="Price" class="form-control" />
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    Quantity:
+                    <input type="text" id="Quantity" value="0" name="Quantity" class="form-control" />
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+
+                    Total:
+                    <input type="text" readonly="readonly" id="txtTotal" value="0.00" name="Total" class="form-control" />
+
+
+
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+
+                   <input type="button" style="margin-top:10px" value="Add to Cart" name="AddToCart" id="btnAddToCart" class="btn btn-success"/>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
 </fieldset>
+<fieldset>
+    <legend>Selected items</legend>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th hidden>
+                    Product ID
+
+                </th>
+                <th>
+                    Product name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Number of items
+                </th>
+                <th>
+                    Total amount
+                </th>
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+        </thead>
+        
+    </table>
+
+    
+</fieldset>
+
 
