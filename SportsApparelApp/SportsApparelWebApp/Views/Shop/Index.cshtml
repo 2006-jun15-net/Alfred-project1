@@ -10,52 +10,26 @@
 
 }
 
-
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#Product").change(function () {
-            var ProdId = $("#Product").val();
-            GetPrice(ProdId);
+@*This script has helper methods used to display unit prices once the user selects a particular product, and
+  calculates the total amount
+*@
+<script src="~/js/shopfunctions.js"></script>
 
-        });
-
-
-    });
-
-    function GetPrice(ProdId) {
-        $.ajax({
-            async: true,
-            type: 'GET',
-            dataType: 'JSON',
-            contentType: 'application/json; charset=utf-8',
-            data: { ProdId: ProdId },
-            url: '/Shop/GetPrice',
-            success: function(data) {
-                $("#txtPrice").val(parseFloat(data).toFixed(2));
-
-            },
-            error: function() {
-                alert("An error with the unit price");
-            }
-        })
-    }
-
-</script>
 
 <style>
-    fieldset{
+    fieldset {
         border: 1px solid;
-        margin:0;
+        margin: 0;
         padding: 10px;
         position: relative;
-        border-radius:4px;
+        border-radius: 4px;
         padding-left: 10px
-
     }
-    legend{
-        font-size:14px;
+
+    legend {
+        font-size: 14px;
         font-weight: bold;
         margin-bottom: 0px;
         width: 35%;
@@ -64,6 +38,8 @@
         padding: 10px;
     }
 </style>
+
+
 
 <fieldset>
     <legend>
@@ -80,8 +56,8 @@
                 </div>
             </div>
 
-            
-            
+
+
         </div>
 
     </div>
@@ -153,7 +129,7 @@
             <div class="col-md-6">
                 <div class="form-group">
 
-                   <input type="button" style="margin-top:10px" value="Add to Cart" name="AddToCart" id="btnAddToCart" class="btn btn-success"/>
+                    <input type="button" style="margin-top:10px" value="Add to Cart" name="AddToCart" id="btnAddToCart" class="btn btn-success" />
 
                 </div>
 
@@ -164,7 +140,7 @@
 </fieldset>
 <fieldset>
     <legend>Selected items</legend>
-    <table style="width:100%">
+    <table style="width:100%" id="tblProductItems">
         <thead>
             <tr>
                 <th hidden>
@@ -190,10 +166,15 @@
             </tr>
 
         </thead>
-        
+
     </table>
 
-    
+
 </fieldset>
+
+<div>
+    <input type="button" value="Place Order" name="Place Order" id="btnPlaceOrder" class="btn btn-primary"/>
+
+</div>
 
 

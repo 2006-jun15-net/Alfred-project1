@@ -48,7 +48,7 @@ namespace SportsApparelWebApp.Repositories
                           {
                               Text = obj.Name,
                               Value = obj.ProdId.ToString(),
-                              Selected = true
+                              Selected = false
                           }).ToList();
             return selectList;
         }
