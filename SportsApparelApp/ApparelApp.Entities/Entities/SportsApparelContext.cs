@@ -113,6 +113,10 @@ namespace ApparelApp.Entities.Entities
 
                 entity.Property(e => e.CustId).HasColumnName("CustID");
 
+                entity.Property(e => e.Datecreated)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustId)
@@ -129,7 +133,9 @@ namespace ApparelApp.Entities.Entities
 
                 entity.Property(e => e.Name).HasMaxLength(35);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(5, 2)");
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(5, 2)")
+                    .HasDefaultValueSql("((50.00))");
             });
 
             modelBuilder.Entity<Store>(entity =>
