@@ -91,6 +91,10 @@ namespace ApparelApp.Entities.Entities
 
                 entity.Property(e => e.Qty).HasColumnName("QTY");
 
+                entity.Property(e => e.TotalCost).HasColumnType("decimal(7, 2)");
+
+                entity.Property(e => e.UnitPrice).HasColumnType("decimal(5, 2)");
+
                 entity.HasOne(d => d.Order)
                     .WithMany()
                     .HasForeignKey(d => d.OrderId)
@@ -116,6 +120,10 @@ namespace ApparelApp.Entities.Entities
                 entity.Property(e => e.Datecreated)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.FinalAmount)
+                    .HasColumnType("decimal(10, 2)")
+                    .HasDefaultValueSql("((0))");
 
                 entity.HasOne(d => d.Cust)
                     .WithMany(p => p.Orders)

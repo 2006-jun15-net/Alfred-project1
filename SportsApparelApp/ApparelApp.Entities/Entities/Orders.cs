@@ -8,6 +8,7 @@ namespace ApparelApp.Entities.Entities
         public int OrderId { get; set; }
         public int CustId { get; set; }
         public DateTime Datecreated { get; set; }
+        public decimal? FinalAmount { get; set; }
 
         public virtual Customer Cust { get; set; }
     }
