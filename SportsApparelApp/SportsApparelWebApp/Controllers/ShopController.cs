@@ -6,7 +6,7 @@ using ApparelApp.Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportsApparelWebApp.Repositories;
-
+using SportsApparelWebApp.ViewModels;
 
 namespace SportsApparelWebApp.Controllers
 {
@@ -14,7 +14,7 @@ namespace SportsApparelWebApp.Controllers
 
 
     {
-        private SportsApparelContext context;
+        private readonly SportsApparelContext context;
         public ShopController()
         {
              context = new SportsApparelContext();
@@ -40,9 +40,15 @@ namespace SportsApparelWebApp.Controllers
             decimal price = (decimal)context.Product.Single(m => m.ProdId == ProdID).Price;
             return Json(price);
 
-            
-
         }
+
+       /* public JsonResult Index(OrderViewModel orderViewModel)
+        {
+            return Json(" ");
+
+        }*/
+
+
 
 
     }

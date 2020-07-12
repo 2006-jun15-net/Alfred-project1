@@ -47,6 +47,7 @@ function AddToShoppingCart() {
 
 function RemoveProduct(ProdId) {
     $(ProdId).closest('tr').remove();
+    GetFinalAmount() - GetAmount;
 
 }
 
@@ -56,6 +57,7 @@ function reset() {
     $("#Quantity").val('');
     $("#Product").val(0);
     $("#txtTotal").val('');
+    
 
 }
 
@@ -102,10 +104,9 @@ function GetFinalAmount(){
     $("#txtTotalAmount").val(finalTotal);
     
 
-
-
-
 }
+
+
 
 
 
