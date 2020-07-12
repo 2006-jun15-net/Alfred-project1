@@ -39,7 +39,8 @@ function AddToShoppingCart() {
         total +
         "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveProduct(this)'/> </tr></tr>";
 
-    items.append(productList);
+    items.append(productList); //add the itms in the cart
+    GetFinalAmount(); //gets the total amount of all the products in the cart
     reset(); //reset the price, quantity, product id and the total amount.
 
 }
@@ -83,6 +84,25 @@ function GetAmount() {
 
     var total = Price * Quantity;
     $("#txtTotal").val(parseFloat(total).toFixed(2));
+
+
+}
+
+function GetFinalAmount(){
+    $("#txtFinalAmount").val("0.00");
+    var finalTotal = 0.00;
+    $("#tblProductItems").find("tr:gt(0)").each(function () {
+        var total = parseFloat($(this).find("td:eq(4)").text());
+        finalTotal += total;
+        
+
+    });
+
+    $("#txtFinalAmount").val(finalTotal);
+    $("#txtTotalAmount").val(finalTotal);
+    
+
+
 
 
 }

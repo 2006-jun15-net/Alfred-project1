@@ -56,6 +56,16 @@
                 </div>
             </div>
 
+            <div class="col-md-4">
+                <div class=" form-group">
+
+                    FinalAmount:
+                    <input type="text" value="0.00" name="FinalAmount" readonly="readonly"  id="txtFinalAmount" class="form-control"/>
+
+
+                </div>
+            </div>
+
 
 
         </div>
@@ -172,8 +182,42 @@
 
 </fieldset>
 
-<div>
-    <input type="button" value="Place Order" name="Place Order" id="btnPlaceOrder" class="btn btn-primary"/>
+<div style="margin-top: 10px">
+    <input data-toggle="modal" data-target="#divPayment" style="float:right" type="button" value="PlaceOrder" name="PlaceOrder" id="btnPlaceOrder" class="btn btn-primary"/>
+
+</div>
+
+<div id="divPayment" class="modal fade" role="dialog">
+    <div class="model-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Payment</h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+
+                            Total Amount:
+                            <input style="text-align:right" type="text" id="txtTotalAmount" readonly="readonly" value="0.00" class="form-control"/>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success" id="btnPayment" value="Payment">Payment</button>
+                <button class="btn btn-danger" id="btnClose" data-dismiss="modal" value="close">close</button>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </div>
 
