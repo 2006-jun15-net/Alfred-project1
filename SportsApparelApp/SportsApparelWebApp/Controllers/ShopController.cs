@@ -42,11 +42,12 @@ namespace SportsApparelWebApp.Controllers
 
         }
 
-       /* public JsonResult Index(OrderViewModel orderViewModel)
+        [HttpPost]
+        public JsonResult Index(OrderViewModel orderViewModel)
         {
             return Json(" ");
 
-        }*/
+        }
 
 
 

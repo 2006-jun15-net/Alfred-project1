@@ -9,12 +9,17 @@
 
         $("input[type=text]").change(function () {
             GetAmount();
-        })
+        });
 
         $("#btnAddToCart").click(function () {
             AddToShoppingCart();
 
-        })
+        });
+
+        $("#btnPayment").click(function () {
+            placeOrder();
+
+        });
 
 
     });
@@ -63,6 +68,7 @@ function reset() {
 
 
 function GetPrice(ProdId) {
+    
         $.ajax({
             async: true,
             type: 'GET',
@@ -103,6 +109,56 @@ function GetFinalAmount(){
     $("#txtFinalAmount").val(finalTotal);
     $("#txtTotalAmount").val(finalTotal);
     
+
+}
+
+
+//This function places the order
+function placeOrder() {
+    var orderViewModel = {};
+    orderViewModel.CustId = $("#Customer").val();
+    orderViewModel.FinalAmount = $("#txtFinalAmount").val();
+
+    //a list of orders
+    var orderDetailViewModels = new Array();
+
+    $("#tblProductItems").find("tr:gt(0)").each(function () {
+        var OrderDetailViewModel = {};
+        OrderDetailViewModel.TotalCost = parseFloat($(this).find("td:eq(4)").text());
+        OrderDetailViewModel.Qty = parseFloat($(this).find("td:eq(3)").text());
+        OrderDetailViewModel.UnitPrice = parseFloat($(this).find("td:eq(2)").text());
+        OrderDetailViewModel.ProdId = parseFloat($(this).find("td:eq(0)").text());
+
+        //inserting the order details in the orderDetailViewModel list
+        orderDetailViewModels.push(OrderDetailViewModel);
+
+    });
+
+    //assigning the newly created orderDetail list to the list in the OrderViewModel
+
+    orderViewModel.orderDetailViewModels = orderDetailViewModels;
+
+
+    //sending the data to the server
+    $.ajax({
+
+        async: true,
+        type: 'POST',
+        dataType: 'JSON',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(orderViewModel), //converts the object to a string
+        url: '/Shop/Index',
+        success: function (data) {
+
+        },
+        error: function () {
+            alert("Something wrong with the data");
+        }
+
+    })
+
+
+
 
 }
 

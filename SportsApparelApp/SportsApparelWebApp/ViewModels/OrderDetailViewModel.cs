@@ -10,6 +10,9 @@ namespace SportsApparelWebApp.ViewModels
         public int OrderId { get; set; }
         public int ProdId { get; set; }
         public int? Qty { get; set; }
+        public decimal? UnitPrice { get; set; }
+        public decimal? TotalCost { get; set; }
+
 
 
     }
