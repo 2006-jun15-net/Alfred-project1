@@ -9,9 +9,8 @@ namespace ApparelApp.Entities.Interfaces
     {
         IEnumerable<Orders> GetAll();
         Orders GetById(int ID);
-        void Insert(Orders orders);
-        void Update(Orders orders);
-        void Delete(int ID);
+        void Add(Orders orders);
+      
         void Save();
 
     }

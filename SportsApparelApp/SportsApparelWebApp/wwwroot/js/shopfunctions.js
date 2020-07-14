@@ -108,6 +108,9 @@ function GetFinalAmount(){
 
     $("#txtFinalAmount").val(finalTotal);
     $("#txtTotalAmount").val(finalTotal);
+
+
+    
     
 
 }
@@ -116,7 +119,7 @@ function GetFinalAmount(){
 //This function places the order
 function placeOrder() {
     var orderViewModel = {};
-    orderViewModel.CustId = $("#Customer").val();
+    orderViewModel.CustomerId = $("#Customer").val();
     orderViewModel.FinalAmount = $("#txtFinalAmount").val();
 
     //a list of orders
@@ -146,9 +149,11 @@ function placeOrder() {
         type: 'POST',
         dataType: 'JSON',
         contentType: 'application/json; charset=utf-8',
-        data: JSON.stringify(orderViewModel), //converts the object to a string
+        data: JSON.stringify(orderViewModel), //converts the object to a strings
         url: '/Shop/Index',
         success: function (data) {
+            alert(data)
+
 
         },
         error: function () {

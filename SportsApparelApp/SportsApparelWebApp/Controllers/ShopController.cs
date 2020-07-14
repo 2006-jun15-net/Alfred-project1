@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ApparelApp.Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SportsApparelWebApp.Models;
 using SportsApparelWebApp.Repositories;
 using SportsApparelWebApp.ViewModels;
 
@@ -20,7 +21,7 @@ namespace SportsApparelWebApp.Controllers
              context = new SportsApparelContext();
                 
         }
-        public IActionResult Index()
+        public ActionResult Index()
         {
             CustomerRepo customerRepo = new CustomerRepo();
             StoreRepo storeRepo = new StoreRepo();
@@ -45,9 +46,14 @@ namespace SportsApparelWebApp.Controllers
         [HttpPost]
         public JsonResult Index(OrderViewModel orderViewModel)
         {
-            return Json(" ");
+            PlaceOrderRepo placeOrderRepo = new PlaceOrderRepo();
+            placeOrderRepo.addOrder(orderViewModel); //adding the order.
+            return Json("Order was placed");
 
         }
+
+
+
 
 
 

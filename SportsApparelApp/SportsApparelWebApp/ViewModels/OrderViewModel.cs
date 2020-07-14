@@ -9,9 +9,9 @@ namespace SportsApparelWebApp.ViewModels
     {
 
         public int OrderId { get; set; }
-        public int CustId { get; set; }
+        public int CustomerId { get; set; }
         public DateTime Datecreated { get; set; }
-        public decimal? FinalAmount { get; set; }
+        public decimal FinalAmount { get; set; }
         public IEnumerable<OrderDetailViewModel> orderDetailViewModels { get; set; }
 
 
