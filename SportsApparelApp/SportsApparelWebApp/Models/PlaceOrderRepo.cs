@@ -32,7 +32,7 @@ namespace SportsApparelWebApp.Models
             orders.Datecreated = DateTime.Now;
 
             sportsApparelContext.Add(orders);
-            //sportsApparelContext.SaveChanges();
+            sportsApparelContext.SaveChanges();
 
             int id = orders.OrderId; // accesing the id of the new created order
             foreach (var x in objOrderViewModel.orderDetailViewModels)
